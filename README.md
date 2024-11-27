@@ -18,12 +18,17 @@ pip install pillow
 deactivate
 
 NOTE: Remember to replace python version to the current one
+
 cd thumbnail_venv/lib/python3.9/site-packages
+
 zip -r ../../../../lambda_python_thumbnail_deployment_package.zip .
+
 cd ../../../../
+
 zip lambda_python_thumbnail_deployment_package.zip lambda_function.py
 
 NOTE: Use the same python version as the development one when creating the lambda function.
+
 aws lambda create-function --function-name Thumbnail-venv --zip-file fileb://lambda_python_thumbnail_deployment_package.zip --handler lambda_function.lambda_handler --runtime python3.9 --timeout 10 --memory-size 1024 --role arn:aws:iam::838047610165:role/Lambda-Load-Inventory-Role --region us-east-1
 
 References:
